@@ -1,5 +1,9 @@
 from pydantic import BaseModel
+from typing import Any, Dict
 
-class ResumeRequest(BaseModel):
-    profile: dict
+class GenerateRequest(BaseModel):
+    profile: Dict[str, Any]
     job_description: str
+
+class GenerateResponse(BaseModel):
+    latex: str
