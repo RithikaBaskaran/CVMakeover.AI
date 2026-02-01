@@ -14,8 +14,7 @@ def rewrite_bullet_with_groq(
     
     # The actual API call can stay commented out until you confirm the key works
     
-    if not can_use_groq():
-        return None
+
 
     try:
         client = Groq()
