@@ -1,5 +1,3 @@
-!pip install groq
-
 import os
 from typing import Optional, List
 from groq import Groq
