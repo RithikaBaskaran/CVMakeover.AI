@@ -12,13 +12,13 @@ def generate(req: GenerateRequest):
 
     keywords = tailored.get("jd_keywords", [])
 
-    for item in tailored.get("projects", []):
-        forced_bullets = []
-        for b in item.get("bullets", []):
-            print("✏️ Sending bullet to LLM:", b)
-            rb = rewrite_bullet_with_groq(b, keywords)
-            forced_bullets.append(rb if rb else b)
-        item["bullets"] = forced_bullets
+    #for item in tailored.get("projects", []):
+    #    forced_bullets = []
+    #    for b in item.get("bullets", []):
+    #        print("✏️ Sending bullet to LLM:", b)
+    #        rb = rewrite_bullet_with_groq(b, keywords)
+    #        forced_bullets.append(rb if rb else b)
+    #    item["bullets"] = forced_bullets
 
     latex = render_latex(tailored)
     return GenerateResponse(latex=latex)

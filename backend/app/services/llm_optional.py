@@ -11,10 +11,9 @@ def rewrite_bullet_with_groq(
 ) -> Optional[str]:
     
     # TEMPORARY TEST: always return proof marker
-    return f"[LLM TEST] {bullet}"
     
     # The actual API call can stay commented out until you confirm the key works
-    """
+    
     if not can_use_groq():
         return None
 
@@ -41,4 +40,4 @@ def rewrite_bullet_with_groq(
     except Exception as e:
         print("❌ Groq LLM error:", e)
         return None
-    """
+    
