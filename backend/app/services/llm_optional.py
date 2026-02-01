@@ -1,7 +1,5 @@
 import os
 from typing import Optional, List
-from google.colab import userdata
-os.environ["GROQ_API_KEY"] = userdata.get("GROQ_API_KEY")
 from groq import Groq
 
 def can_use_groq() -> bool:
