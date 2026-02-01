@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>CVMakeover.AI</title>
+    <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+    <h2>CVMakeover.AI</h2>
+
+    <div class="row">
+        <label>Backend URL</label>
+        <input id="apiBase" placeholder="https://localhost:8000/*" />
+    </div>
+
+    <div class="row">
+        <label>Resume Profile (JSON)</label>
+        <input id="profileFile" type="file" accept="application/json" />
+    </div>
+
+    <div class="row">
+        <button id="loadExample">Load Example Profile</button>
+        <span id="profileStatus">No profile loaded</span>
+    </div>
+
+    <div class="row">
+        <button id="generate">Generate LaTeX Resume</button>
+        <button id="download" disabled>Download .tex</button>
+    </div>
+
+    <div id="status"></div>
+    <textarea id="output" placeholder="LaTeX output..." readonly></textarea>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

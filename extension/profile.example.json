@@ -1,0 +1,44 @@
+{
+    "name": "Jane Student",
+    "email": "jane@student.edu",
+    
+    "education": [
+        {
+            "school": "University Name",
+            "degree": "M.S. Data Science",
+            "dates": "2024–2026"
+        }
+    ],
+    "experience": [
+        {
+            "title": "Data Science Intern",
+            "org": "Company",
+            "dates": "2025",
+            "bullets": [
+                "Built ML features in Python and evaluated models.",
+                "Created SQL pipelines and dashboards for stakeholders."
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "name": "Project A",
+            "tools": [
+                "Python",
+                "Pandas",
+                "Scikit-learn"
+            ],
+            "bullets": [
+                "Implemented classification model with 0.92 F1 score.",
+                "Deployed as a small web demo."
+            ]
+        }
+    ],
+    "skills": [
+        "Python",
+        "SQL",
+        "NLP",
+        "FastAPI",
+        "Git"
+    ]
+}

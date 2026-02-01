@@ -1,0 +1,23 @@
+Data Scientist – Machine Learning
+
+About the Role:
+The Data Scientist will demonstrate strong knowledge of machine learning algorithms
+and lead projects to build AI-assisted marketing analytics solutions.
+
+Key Responsibilities:
+- Develop and implement AI/ML solutions for marketing analytics
+- Work with cross-functional teams to deliver data-driven insights
+- Build and deploy ML models for real-world business problems
+- Engage with stakeholders and customers to understand requirements
+
+Required Skills:
+- Machine Learning algorithms: Linear Regression, Logistic Regression, Clustering, Decision Trees, Random Forest, GBM, DNN, Naive Bayes, SVM
+- Python, SQL, PySpark
+- Pandas, NumPy, SciPy, Scikit-Learn
+- Statistical analysis and data modeling
+- Data visualization and storytelling
+- Strong analytical and critical thinking skills
+- Calculus, Linear Algebra, Statistics, Probability
+
+Education:
+- Master’s degree in Data Science, Statistics, Math, Computer Science, or related quantitative field
