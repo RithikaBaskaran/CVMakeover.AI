@@ -1,6 +1,6 @@
 from typing import Dict, Any, List
 from .extract import extract_keywords
-from .llm_optional import rewrite_bullet_with_groq  # import LLM function
+from .llm_optional import rewrite_bullet_with_groq  # always use LLM
 
 def score_bullet(bullet: str, keywords: List[str]) -> int:
     b = bullet.lower()
@@ -31,7 +31,7 @@ def tailor_profile(profile: Dict[str, Any], job_description: str) -> Dict[str, A
     out = dict(profile)
     out["jd_keywords"] = keywords
 
-    # Sort skills by JD relevance
+    # Re-rank skills
     skills = profile.get("skills", [])
     skills_sorted = sorted(skills, key=lambda s: (s.lower() in " ".join(keywords)), reverse=True)
     out["skills"] = skills_sorted
@@ -42,7 +42,7 @@ def tailor_profile(profile: Dict[str, Any], job_description: str) -> Dict[str, A
     exp_top = pick_top_bullets(experience, keywords, max_total=6)
     proj_top = pick_top_bullets(projects, keywords, max_total=6)
 
-    # Rewrite bullets using Groq LLM inside regroup
+    # Regroup and rewrite bullets always
     def regroup(selected):
         grouped = {}
         for item, bullet in selected:
@@ -50,9 +50,9 @@ def tailor_profile(profile: Dict[str, Any], job_description: str) -> Dict[str, A
             if key not in grouped:
                 grouped[key] = {**item, "bullets": []}
 
-            # 🔥 Rewrite bullet with LLM if available
+            # 🔥 ALWAYS rewrite
             rewritten = rewrite_bullet_with_groq(bullet, keywords)
-            grouped[key]["bullets"].append(rewritten if rewritten else bullet)
+            grouped[key]["bullets"].append(rewritten)
 
         return list(grouped.values())
 
