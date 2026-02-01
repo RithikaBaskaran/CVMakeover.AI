@@ -1,6 +1,5 @@
 from typing import List, Optional
 from groq import Groq
-
 def rewrite_bullet_with_groq(bullet: str, keywords: List[str]) -> str:
     """
     Always try to rewrite the bullet using Groq LLM.
