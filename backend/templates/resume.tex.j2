@@ -1,0 +1,47 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin=*}
+
+\begin{document}
+
+{\LARGE \textbf{ {{ name | default("Your Name") }} }}\\
+\href{mailto:{{ email | default("you@email.com") }}}{{ email | default("you@email.com") }}\\
+\vspace{6pt}
+
+\section*{Education}
+{% for e in education | default([]) %}
+\textbf{ {{ e.school }} } --- {{ e.degree }} \hfill {{ e.dates }}\\
+{% endfor %}
+\vspace{6pt}
+
+\section*{Skills}
+{{ (skills | default([])) | join(", ") }}\\
+\vspace{6pt}
+
+\section*{Experience}
+{% for ex in experience | default([]) %}
+\textbf{ {{ ex.title | default(ex.org) }} } --- {{ ex.org | default("") }} \hfill {{ ex.dates | default("") }}\\
+\begin{itemize}
+{% for b in ex.bullets | default([]) %}
+  \item {{ b }}
+{% endfor %}
+\end{itemize}
+{% endfor %}
+\vspace{6pt}
+
+\section*{Projects}
+{% for p in projects | default([]) %}
+\textbf{ {{ p.name }} } \hfill Tools: {{ (p.tools | default([])) | join(", ") }}\\
+\begin{itemize}
+{% for b in p.bullets | default([]) %}
+  \item {{ b }}
+{% endfor %}
+\end{itemize}
+{% endfor %}
+
+\vspace{8pt}
+{\small \textit{Tailored keywords detected: {{ (jd_keywords | default([]))[:12] | join(", ") }}}}
+
+\end{document}
