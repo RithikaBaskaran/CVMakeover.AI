@@ -24,3 +24,6 @@ def rewrite_bullet_with_groq(bullet: str, keywords: List[str]) -> str:
         )
         rewritten = completion.choices[0].message.content.strip()
         return rewritten
+    except Exception as e:
+        print("❌ Groq LLM error:", e)
+        return f"[LLM FAILED] {bullet}"  # fallback to original bullet
