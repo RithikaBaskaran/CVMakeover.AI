@@ -15,6 +15,7 @@ def rewrite_bullet_with_groq(
     """
 
     if not can_use_groq():
+        print("⚠️ GROQ_API_KEY not set — skipping LLM rewrite")
         return None
 
     prompt = (
@@ -35,6 +36,15 @@ def rewrite_bullet_with_groq(
             max_completion_tokens=128,
             top_p=1,
         )
-        return completion.choices[0].message.content.strip() or None
-    except Exception:
+
+        rewritten = completion.choices[0].message.content.strip()
+
+        if rewritten:
+            print("✅ LLM USED (Groq):", rewritten)
+            # marker for verification
+            return rewritten + "  % rewritten_by_llm"
+        return None
+
+    except Exception as e:
+        print("❌ Groq error:", str(e))
         return None
