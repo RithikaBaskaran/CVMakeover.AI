@@ -3,10 +3,12 @@ from .extract import extract_keywords
 from .llm_optional import rewrite_bullet_with_groq  # always use LLM
 
 def score_bullet(bullet: str, keywords: List[str]) -> int:
+    """Simple frequency-based scoring for bullet relevance."""
     b = bullet.lower()
     return sum(1 for k in keywords if k in b)
 
 def pick_top_bullets(items: List[Dict[str, Any]], keywords: List[str], max_total: int = 8):
+    """Select the top bullets from experience or projects."""
     scored = []
     for section_item in items:
         for bullet in section_item.get("bullets", []):
@@ -26,12 +28,13 @@ def pick_top_bullets(items: List[Dict[str, Any]], keywords: List[str], max_total
     return chosen
 
 def tailor_profile(profile: Dict[str, Any], job_description: str) -> Dict[str, Any]:
+    """Tailor a profile to a job description using both ranking and LLM rewriting."""
+    # Extract keywords for ranking purposes
     keywords = extract_keywords(job_description)
-
     out = dict(profile)
     out["jd_keywords"] = keywords
 
-    # Re-rank skills
+    # Re-rank skills: put skills appearing in JD first
     skills = profile.get("skills", [])
     skills_sorted = sorted(skills, key=lambda s: (s.lower() in " ".join(keywords)), reverse=True)
     out["skills"] = skills_sorted
@@ -42,7 +45,7 @@ def tailor_profile(profile: Dict[str, Any], job_description: str) -> Dict[str, A
     exp_top = pick_top_bullets(experience, keywords, max_total=6)
     proj_top = pick_top_bullets(projects, keywords, max_total=6)
 
-    # Regroup and rewrite bullets always
+    # Regroup and rewrite bullets using LLM
     def regroup(selected):
         grouped = {}
         for item, bullet in selected:
@@ -50,8 +53,8 @@ def tailor_profile(profile: Dict[str, Any], job_description: str) -> Dict[str, A
             if key not in grouped:
                 grouped[key] = {**item, "bullets": []}
 
-            # 🔥 ALWAYS rewrite
-            rewritten = rewrite_bullet_with_groq(bullet, keywords)
+            # 🔥 ALWAYS rewrite with full JD text
+            rewritten = rewrite_bullet_with_groq(bullet, job_description)
             grouped[key]["bullets"].append(rewritten)
 
         return list(grouped.values())

@@ -1,14 +1,14 @@
-from typing import List, Optional
 from groq import Groq
-def rewrite_bullet_with_groq(bullet: str, keywords: List[str]) -> str:
+
+def rewrite_bullet_with_groq(bullet: str, job_description: str) -> str:
     """
-    Always try to rewrite the bullet using Groq LLM.
-    If an error occurs, fallback to returning the original bullet.
+    Rewrite a resume bullet using Groq LLM.
+    Receives the full job description as input for better relevance.
     """
     prompt = (
         "Rewrite this resume bullet to strongly match the job keywords. "
         "Be concise, action-oriented, and ATS-friendly.\n\n"
-        f"Job keywords: {', '.join(keywords[:10])}\n"
+        f"Job keywords: {job_description}\n"
         f"Original bullet: {bullet}\n\n"
         "Return exactly ONE rewritten bullet. No explanations."
     )
@@ -25,4 +25,5 @@ def rewrite_bullet_with_groq(bullet: str, keywords: List[str]) -> str:
         return rewritten
     except Exception as e:
         print("❌ Groq LLM error:", e)
-        return f"[LLM FAILED] {bullet}"  # fallback to original bullet
+        # fallback if LLM fails
+        return f"[LLM FAILED] {bullet}"
