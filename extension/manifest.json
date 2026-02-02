@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "CVMakeover.AI",
+    "version": "1.0.0",
+    "description": "Generate a tailored LaTeX resume from any job description.",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "host_permissions": [
+        "https://localhost:8000/*"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}

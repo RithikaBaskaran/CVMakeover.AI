@@ -1,0 +1,53 @@
+{
+  "profile": {
+    "name": "Jane Student",
+    "email": "jane@student.edu",
+    "education": [
+      {
+        "school": "University of Example",
+        "degree": "M.S. Data Science",
+        "dates": "2024–2026"
+      }
+    ],
+    "experience": [
+      {
+        "title": "Data Science Intern",
+        "org": "TechCorp",
+        "dates": "Summer 2025",
+        "bullets": [
+          "Built machine learning models using Python and Scikit-learn to predict customer churn.",
+          "Developed SQL pipelines to process large datasets.",
+          "Created dashboards in Tableau for stakeholder reporting.",
+          "Collaborated with engineering teams to deploy FastAPI services."
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "name": "Resume Matcher",
+        "tools": [
+          "Python",
+          "FastAPI",
+          "NLP",
+          "React"
+        ],
+        "bullets": [
+          "Built an NLP system to extract skills from job descriptions.",
+          "Implemented keyword matching to tailor resumes.",
+          "Deployed application as a web tool for students."
+        ]
+      }
+    ],
+    "skills": [
+      "Python",
+      "SQL",
+      "Machine Learning",
+      "NLP",
+      "FastAPI",
+      "Pandas",
+      "Scikit-learn",
+      "Git"
+    ]
+  },
+  "job_description": "Data Scientist – Machine Learning\n\nAbout the Role:\nThe Data Scientist will demonstrate strong knowledge of machine learning algorithms\nand lead projects to build AI-assisted marketing analytics solutions.\n\nKey Responsibilities:\n- Develop and implement AI/ML solutions for marketing analytics\n- Work with cross-functional teams to deliver data-driven insights\n- Build and deploy ML models for real-world business problems\n- Engage with stakeholders and customers to understand requirements\n\nRequired Skills:\n- Machine Learning algorithms: Linear Regression, Logistic Regression, Clustering, Decision Trees, Random Forest, GBM, DNN, Naive Bayes, SVM\n- Python, SQL, PySpark\n- Pandas, NumPy, SciPy, Scikit-Learn\n- Statistical analysis and data modeling\n- Data visualization and storytelling\n- Strong analytical and critical thinking skills\n- Calculus, Linear Algebra, Statistics, Probability\n\nEducation:\n- Master’s degree in Data Science, Statistics, Math, Computer Science, or related quantitative field\n"
+}
